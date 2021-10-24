@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<form action="" id = "frm">
+		<label for="c1">Цвет</label><input type="color" name = "c1" id="c1"><br>
+		<label for="date">Дата</label><input type="date" name="date" id="date"><br>
+		<label for="range">Range</label><input type="range" id="range" min = "17" max = "453" style="width: 200px"><br>
+		<button id = "send">Отправить</button>
+		<span>100</span>
+	</form>
+
+	<Script>
+
+		//обработка инпута range
+		document.querySelector('#range').oninput = () =>{
+			document.querySelector('span').innerHTML = document.querySelector('#range').value;
+		};
+
+
+		//перехват отправки формы и замена своим событием
+		const form = document.querySelector('#frm');
+		form.addEventListener('submit', function(evt) { 
+			evt.preventDefault();
+			let col = document.querySelector('#c1');
+			document.querySelector('button').style.backgroundColor = col.value;
+		});
+
+	</Script>
+</body>
+</html>
